@@ -24,7 +24,7 @@ class Inventory():
         raw_data = map(lambda s: s.strip().split(None, len(headers) - 1), command[1:])
         dict_result = [dict(zip(headers, r)) for r in raw_data]
         
-        return {"Processes": "".join(set([d['PID']+ " " + d["CMD"] + ";" for d in dict_result]))}
+        return {"Processes": "".join(set([d["PID"]+ " " + d["CMD"] + " " for d in dict_result]))}
         
     def active_users():
         command = subprocess.run(["users"], text=True, stdout=subprocess.PIPE).stdout.replace("\n", "").split(" ")
